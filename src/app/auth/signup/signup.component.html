@@ -1,0 +1,14 @@
+
+<p>List of all active users!</p>
+<div *ngFor="let user of users">
+  <h4>{{user.id}}. {{ user.name }}</h4>
+  <button (click)="deleteUser(user.id)">
+    Delete this user
+  </button>
+  <button (click)="updateUser(user.id, user.name + '+')">
+    Update this user with a +
+  </button>
+  <button (click)="createUser(user)">
+    Create a user
+  </button>
+</div>
