@@ -7,19 +7,28 @@ import {AuthModule} from './auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {DbService} from './services/db.service';
+import {LayoutModule} from './layout/layout.module';
+import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {DashboardModule} from './dashboard/dashboard.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
+    FormsModule,
     AppRoutingModule,
-    AuthModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(DbService, {delay: 100})
+    HttpClientInMemoryWebApiModule.forRoot(DbService, {delay: 100}),
+    AuthModule,
+    LayoutModule,
+    DashboardModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

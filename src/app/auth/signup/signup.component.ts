@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,14 @@ import {AuthService} from '../../services/auth.service';
 })
 export class SignupComponent implements OnInit {
   users;
-  constructor(private authService: AuthService) { }
+  model: any = {};
+  menu = [
+    {
+      path: '/dashboard',
+      name: 'Dashboard'
+    }
+  ];
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.getUsers();
@@ -34,11 +42,13 @@ export class SignupComponent implements OnInit {
       }
     );
   }
-  createUser(body) {
+  createUser() {
     const id = this.users.length + 1;
-    this.authService.createUser({id, name: body.name + ' copy'}).subscribe(
+    console.log(this.model);
+    this.authService.createUser({id, user: this.model }).subscribe(
       results => {
         this.getUsers();
+        this.router.navigate(['/dashboard']);
       }
     );
   }
