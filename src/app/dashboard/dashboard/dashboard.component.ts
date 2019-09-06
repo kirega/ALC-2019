@@ -8,16 +8,20 @@ import {AuthService} from '../../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   users;
+  show = false;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.getUsers();
+    // setInterval(() => {
+    //   this.show = !this.show;
+    //   console.log('dashboard', this.show);
+    // }, 1000);
   }
   getUsers() {
     this.authService.getUsers().subscribe(
       results => {
         this.users = results;
-        console.log(this.users)
       }
     );
   }

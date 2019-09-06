@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <div class="container mt-3">
-  <h3>All Users</h3>
+  <ng-container *appUnless="show" >
+    <h3 appUnderline>All Users</h3>
+  </ng-container>
+
+
   <div class="row">
     <div *ngFor="let user of users" class="col card m-1" style="width: 18rem;">
       <div class="card-body ">
@@ -9,4 +13,11 @@
       </div>
     </div>
   </div>
+<!--  Usage o/-->
+  <button [appBtn]="'cancel'">
+    Cancel
+  </button>
+  <button [appBtn]="'save'">
+    Save
+  </button>
 </div>
