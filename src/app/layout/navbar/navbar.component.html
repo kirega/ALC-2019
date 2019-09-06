@@ -4,6 +4,7 @@
   <div class="collapse navbar-collapse">
     <div class="navbar-nav" >
       <a class="nav-item nav-link" *ngFor="let item of menu" [routerLink]="item.path">{{ item.name }}</a>
+      <a class="nav-item nav-link" *appAdminRights > Admin</a>
     </div>
   </div>
 </nav>
